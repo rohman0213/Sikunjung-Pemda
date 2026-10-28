@@ -1,58 +1,101 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+# SI Kunjung Pemda
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+Sistem Informasi Kunjungan Pemerintah Daerah merupakan aplikasi berbasis web untuk mengelola permohonan kunjungan, jadwal kunjungan, data karyawan, kegiatan, serta proses pelayanan kunjungan.
 
-## About Laravel
+## Fitur Aplikasi
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+- Halaman beranda publik.
+- Informasi jadwal kunjungan.
+- Informasi struktur karyawan.
+- Autentikasi pengguna.
+- Panel administrator untuk mengelola data karyawan, kegiatan, dan pengaturan jadwal kunjungan.
+- Panel karyawan untuk mengelola proses kunjungan.
+- Panel pemohon untuk mengajukan dan memantau kunjungan.
+- Pengujian otomatis menggunakan PHPUnit.
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+## Teknologi
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+- PHP
+- Laravel
+- MySQL
+- Blade
+- PHPUnit
 
-## Learning Laravel
+## Persyaratan
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+Pastikan perangkat telah memiliki:
 
-In addition, [Laracasts](https://laracasts.com) contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+- Laragon atau lingkungan pengembangan PHP yang setara.
+- PHP dengan ekstensi yang dibutuhkan Laravel.
+- Composer.
+- MySQL atau MariaDB.
+- Node.js dan npm jika diperlukan untuk membangun aset frontend.
 
-You can also watch bite-sized lessons with real-world projects on [Laravel Learn](https://laravel.com/learn), where you will be guided through building a Laravel application from scratch while learning PHP fundamentals.
+## Instalasi
 
-## Agentic Development
+1. Clone atau salin proyek ke direktori kerja.
+2. Buka terminal pada direktori proyek.
+3. Pasang dependensi PHP:
 
-Laravel's predictable structure and conventions make it ideal for AI coding agents like Claude Code, Cursor, and GitHub Copilot. Install [Laravel Boost](https://laravel.com/docs/ai) to supercharge your AI workflow:
+   ```bash
+   composer install
+   ```
+
+4. Salin konfigurasi lingkungan:
+
+   ```bash
+   copy .env.example .env
+   ```
+
+   Pada Linux atau macOS, gunakan `cp .env.example .env`.
+
+5. Sesuaikan konfigurasi database pada `.env` dengan database lokal.
+6. Buat application key:
+
+   ```bash
+   php artisan key:generate
+   ```
+
+7. Jalankan migrasi database:
+
+   ```bash
+   php artisan migrate
+   ```
+
+8. Jika ingin mengisi data demo, periksa konfigurasi seeder terlebih dahulu, kemudian jalankan:
+
+   ```bash
+   php artisan db:seed
+   ```
+
+9. Jalankan aplikasi:
+
+   ```bash
+   php artisan serve
+   ```
+
+10. Buka alamat lokal yang ditampilkan oleh Laravel atau alamat virtual host yang dikonfigurasi di Laragon.
+
+## Pengujian Otomatis
+
+Jalankan seluruh pengujian dengan perintah:
 
 ```bash
-composer require laravel/boost --dev
-
-php artisan boost:install
+php artisan test
 ```
 
-Boost provides your agent 15+ tools and skills that help agents build Laravel applications while following best practices.
+Untuk menjalankan pengujian tertentu:
 
-## Contributing
+```bash
+php artisan test --filter=LandingTest
+```
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+## Dokumentasi
 
-## Code of Conduct
+Dokumentasi tutorial instalasi, konfigurasi, penggunaan aplikasi, dan pengujian akan disediakan di direktori `docs/tutorial/`.
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+## Catatan
 
-## Security Vulnerabilities
-
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
-
-## License
-
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+- Sesuaikan nama database dengan konfigurasi lokal pada `.env`.
+- Jangan membagikan file `.env` karena dapat berisi konfigurasi sensitif.
+- Jangan menjalankan `php artisan migrate:fresh` pada database yang berisi data penting karena perintah tersebut menghapus tabel sebelum migrasi ulang.

@@ -32,9 +32,7 @@
 
     public function test_admin_tidak_bisa_mengakses_dashboard_peran_lain(): void
     {
-        $admin = User::factory()->create([
-            'role' => 'admin',
-        ]);
+        $admin = User::factory()->admin()->create();
 
         $this->actingAs($admin)
             ->get(route('karyawan.dashboard'))
@@ -45,11 +43,18 @@
             ->assertForbidden();
     }
 
+    public function test_admin_tidak_bisa_mengakses_daftar_kunjungan_karyawan(): void
+    {
+        $admin = User::factory()->admin()->create();
+
+        $this->actingAs($admin)
+            ->get(route('karyawan.kunjungan.index'))
+            ->assertForbidden();
+    }
+
     public function test_karyawan_tidak_bisa_mengakses_dashboard_peran_lain(): void
     {
-        $karyawan = User::factory()->create([
-            'role' => 'karyawan',
-        ]);
+        $karyawan = User::factory()->karyawan()->create();
 
         $this->actingAs($karyawan)
             ->get(route('admin.dashboard'))
@@ -62,9 +67,7 @@
 
     public function test_pemohon_tidak_bisa_mengakses_dashboard_peran_lain(): void
     {
-        $pemohon = User::factory()->create([
-            'role' => 'pemohon',
-        ]);
+        $pemohon = User::factory()->pemohon()->create();
 
         $this->actingAs($pemohon)
             ->get(route('admin.dashboard'))
